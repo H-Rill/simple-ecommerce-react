@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { Component, useState } from "react";
-import Counter from "./components/Counter";
+import { useState } from "react";
 import Counters from "./components/Counters";
 import Navbar from "./components/Navbar";
 
@@ -11,6 +10,7 @@ import React from "react";
 import { PRODUCTS_DATA } from "./data/products";
 import CheckoutPage from "./components/CheckoutPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AddProduct from "./components/AddProduct";
 
 const App = () => {
 
@@ -19,6 +19,9 @@ const App = () => {
   const [productList, setProduct] = useState(PRODUCTS_DATA);
   const [cart, setCart] = useState([]);
 
+  const addProduct = (newProduct) =>{
+    setProduct([...productList, newProduct]);
+  }
 
   const handleDeleteProduct = (id) => {
     setProduct(productList.filter((counter) => counter.id !== id));
@@ -121,8 +124,9 @@ const App = () => {
           <Route path="/checkout" element={<CheckoutPage cart={cart} setCart={setCart} onDelete={handleDeleteProduct} />}>
             
           </Route>
-     
-      
+
+          <Route path="/product/new" element={<AddProduct addProduct={addProduct} />} />
+
         </Routes>
         </BrowserRouter>
     </div>

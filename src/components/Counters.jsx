@@ -1,4 +1,3 @@
-import { Component } from "react";
 import Counter from "./Counter";
 
 // export default class Counters extends Component {
@@ -21,6 +20,7 @@ import Counter from "./Counter";
 // }
 
 import React from 'react'
+import { Link } from "react-router-dom";
 
 const Counters = (props,) => {
   return newFunction(props);
@@ -35,6 +35,7 @@ function newFunction(props) {
   }
   return (
     <div className="container my-4">
+     <Link to="/product/new" className="btn btn-primary">+ Add Products</Link>
       {chunkedCounters.map((row, rowIndex) => (
         <div key={rowIndex} className="row mb-4">
           {row.map((counter) => (
